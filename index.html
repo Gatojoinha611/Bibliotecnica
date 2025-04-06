@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual Épica</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header-title">
+            <i class="fas fa-book header-icon"></i>
+            <h1>Biblioteca Épica</h1>
+        </div>
+        <div class="header-actions">
+            <button id="add-book-btn" class="header-btn"><i class="fas fa-plus"></i> Adicionar</button>
+            <button id="toggle-themes" class="header-btn"><i class="fas fa-palette"></i> Temas</button>
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search-bar" placeholder="Buscar na estante...">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <select id="genre-filter">
+                <option value="">Filtrar por gênero</option>
+            </select>
+            <button id="toggle-favorites">Mostrar Favoritos</button>
+            <button id="export-books" class="header-btn"><i class="fas fa-download"></i> Exportar</button>
+            <input type="file" id="import-books" accept=".json" style="display: none;">
+            <button id="import-btn" class="header-btn"><i class="fas fa-upload"></i> Importar</button>
+            <div class="online-search-container">
+                <input type="text" id="online-search" placeholder="Buscar online (Google Books)">
+                <button id="search-online-btn">Buscar</button>
+                <div id="online-results" class="online-results"></div>
+            </div>
+        </aside>
+
+        <main class="book-shelf">
+            <h2>Minha Estante</h2>
+            <div id="book-list" class="book-grid"></div>
+        </main>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span id="close-modal" class="close">×</span>
+                <h3 id="modal-title">Adicionar Novo Livro</h3>
+                <img id="cover-preview" class="cover-preview" alt="Pré-visualização da capa">
+                <form id="book-form">
+                    <input type="text" id="title" placeholder="Título" required>
+                    <input type="text" id="author" placeholder="Autor" required>
+                    <input type="text" id="genre" placeholder="Gênero">
+                    <textarea id="review" placeholder="Sua crítica ou opinião"></textarea>
+                    <select id="rating" required>
+                        <option value="">Nota (0-5)</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <input type="date" id="read-date" placeholder="Data de Leitura">
+                    <select id="status" required>
+                        <option value="">Status</option>
+                        <option value="Lido">Lido</option>
+                        <option value="Lendo">Lendo</option>
+                        <option value="Quero Ler">Quero Ler</option>
+                    </select>
+                    <div class="cover-input-container">
+                        <input type="file" id="cover-image" accept="image/*">
+                        <label for="cover-image"><i class="fas fa-upload"></i> Adicionar Imagem</label>
+                        <button type="button" id="remove-cover-btn" class="remove-btn"><i class="fas fa-trash"></i> Remover Imagem</button>
+                    </div>
+                    <input type="hidden" id="book-id">
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="details-modal" class="modal">
+            <div class="modal-content details-content">
+                <span id="close-details" class="close">×</span>
+                <div id="book-details"></div>
+            </div>
+        </div>
+
+        <div id="themes-modal" class="modal">
+            <div class="modal-content themes-content">
+                <span id="close-themes" class="close">×</span>
+                <h3>Escolha um Tema</h3>
+                <div id="themes-list">
+                    <button class="theme-btn" data-theme="default">Padrão</button>
+                    <button class="theme-btn" data-theme="dark">Escuro</button>
+                    <button class="theme-btn" data-theme="classico">Clássico</button>
+                    <button class="theme-btn" data-theme="duna">Duna</button>
+                    <button class="theme-btn" data-theme="cyberpunk">Cyberpunk</button>
+                    <button class="theme-btn" data-theme="floresta">Floresta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
